@@ -1,8 +1,8 @@
 import express from "express"
-import { DatabaseModel, UserModel } from "./models/index.js"
-import { UserController } from './controllers/index.js'
+import { UserController, getCourses } from './controllers/index.js'
 
 const app = express()
 app.get('/', UserController)
+app.get('/courses', getCourses)
 app.use(express.json())
 app.listen(3030)
