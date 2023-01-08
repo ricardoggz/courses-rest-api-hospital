@@ -1,22 +1,40 @@
 import { DatabaseModel } from '../../models/index.js'
 
+
 const db = new DatabaseModel()
-export function UserController(req, res){
+
+export const userLogin = (req, res)=> {
   db.pool.getConnection((err, conn)=>{
-    if(err) return res.json(err)
-    conn.query('SELECT * FROM usuarios', (err, rows)=>{
-        return res.json(rows)
-    })
-    conn.release()
-  })  
+      if(err) throw new Error(err)
+      conn.query(
+          `SELECT * FROM usuarios
+           WHERE
+           user_user = "${req.body.user_user}"
+           AND
+           user_password = "${req.body.user_password}"
+          `,
+          (err, rows)=> {
+              !err ? res.json(rows) : res.json(err)
+              conn.release()
+          }
+      )
+  })
 }
-export function userLogin(req, res){
+export const updateUser= (req, res)=> {
   db.pool.getConnection((err, conn)=>{
-    if(err) return res.json(err)
-    conn.query('SELECT * FROM usuarios WHERE user_user=? AND user_password=?', [req.body.user_user, req.body.user_password], (err, rows)=>{
-      if(err) return res.json(err)
-      return res.json(rows)
-    })
-    conn.release()
+      if(err) throw new Error(err)
+      conn.query(
+          `UPDATE usuarios
+           SET
+           user_user = "${req.body.user_user}",
+           user_name = "${req.body.user_name}",
+           user_password = "${req.body.user_password}"
+           WHERE user_user = "${req.params.id}"`,
+          (err)=> {
+              !err ? res.json({message: 'Datos actualizados con éxito'})
+              :res.json(err)
+              conn.release()
+          }
+      )
   })
 }
