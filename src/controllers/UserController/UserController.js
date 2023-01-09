@@ -1,3 +1,4 @@
+import bycript from 'bcryptjs'
 import { DatabaseModel } from '../../models/index.js'
 
 
@@ -22,6 +23,8 @@ export const userLogin = (req, res)=> {
 }
 export const updateUser= (req, res)=> {
   db.pool.getConnection((err, conn)=>{
+    const salt = bycript.genSaltSync()
+    req.body.user_password = bycript.hashSync(req.body.user_password, salt)
       if(err) throw new Error(err)
       conn.query(
           `UPDATE usuarios
