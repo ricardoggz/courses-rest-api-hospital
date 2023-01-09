@@ -14,6 +14,6 @@ export class ServerModel{
         this.server.listen(3030)
     }
     routes(){
-        this.server.use('/', UserRouter)
+        this.server.use('/api/auth/', UserRouter)
     }
 }
