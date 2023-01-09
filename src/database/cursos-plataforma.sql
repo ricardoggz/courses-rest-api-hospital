@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 05-01-2023 a las 19:32:51
--- Versión del servidor: 10.4.27-MariaDB
--- Versión de PHP: 8.2.0
+-- Servidor: 127.0.0.1:3306
+-- Tiempo de generación: 09-01-2023 a las 03:17:16
+-- Versión del servidor: 5.7.36
+-- Versión de PHP: 8.1.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -27,19 +27,26 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `cursos`
 --
 
-CREATE TABLE `cursos` (
+DROP TABLE IF EXISTS `cursos`;
+CREATE TABLE IF NOT EXISTS `cursos` (
   `course_id` int(11) NOT NULL,
   `course_name` varchar(255) NOT NULL,
   `course_file` varchar(255) NOT NULL,
-  `category_name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `category_name` varchar(255) NOT NULL,
+  PRIMARY KEY (`course_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
 
 --
--- Volcado de datos para la tabla `cursos`
+-- Estructura de tabla para la tabla `roles`
 --
 
-INSERT INTO `cursos` (`course_id`, `course_name`, `course_file`, `category_name`) VALUES
-(1, 'Primeros auxilios', 'https://vimeo.com/757750520', 'curso');
+DROP TABLE IF EXISTS `roles`;
+CREATE TABLE IF NOT EXISTS `roles` (
+  `rol_id` varchar(60) CHARACTER SET utf8mb4 NOT NULL,
+  PRIMARY KEY (`rol_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -47,47 +54,26 @@ INSERT INTO `cursos` (`course_id`, `course_name`, `course_file`, `category_name`
 -- Estructura de tabla para la tabla `usuarios`
 --
 
-CREATE TABLE `usuarios` (
-  `user_user` varchar(255) NOT NULL,
+DROP TABLE IF EXISTS `usuarios`;
+CREATE TABLE IF NOT EXISTS `usuarios` (
+  `user_user` varchar(60) NOT NULL,
   `user_name` varchar(255) NOT NULL,
   `user_password` varchar(255) NOT NULL,
   `user_grade` varchar(255) DEFAULT NULL,
-  `institution_id` int(11) DEFAULT NULL,
-  `rol_id` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `rol_id` varchar(60) NOT NULL,
+  PRIMARY KEY (`user_user`),
+  KEY `rol_id` (`rol_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `usuarios`
---
-
-INSERT INTO `usuarios` (`user_user`, `user_name`, `user_password`, `user_grade`, `institution_id`, `rol_id`) VALUES
-('ricardo_guzman', 'Ricardo josè Guevara Guzmàn', 'clave123', 'Ing. en Comunicaciòn Multimedia', 23, 'user');
-
---
--- Índices para tablas volcadas
+-- Restricciones para tablas volcadas
 --
 
 --
--- Indices de la tabla `cursos`
---
-ALTER TABLE `cursos`
-  ADD PRIMARY KEY (`course_id`);
-
---
--- Indices de la tabla `usuarios`
+-- Filtros para la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`user_user`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `cursos`
---
-ALTER TABLE `cursos`
-  MODIFY `course_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  ADD CONSTRAINT `rol_id` FOREIGN KEY (`rol_id`) REFERENCES `roles` (`rol_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
