@@ -1,6 +1,6 @@
 import cors from 'cors'
 import express from 'express'
-import { UserRouter } from '../../routes/index.js'
+import { UserRouter, CourseRouter } from '../../routes/index.js'
 
 export class ServerModel{
     constructor(){
@@ -15,5 +15,6 @@ export class ServerModel{
     }
     routes(){
         this.server.use('/api/auth/', UserRouter)
+        this.server.use('/api/courses/', CourseRouter)
     }
 }
