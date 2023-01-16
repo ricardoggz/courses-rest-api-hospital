@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 09-01-2023 a las 03:17:16
--- Versión del servidor: 5.7.36
--- Versión de PHP: 8.1.0
+-- Servidor: localhost
+-- Tiempo de generación: 16-01-2023 a las 22:52:50
+-- Versión del servidor: 10.4.27-MariaDB
+-- Versión de PHP: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -27,14 +27,12 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `cursos`
 --
 
-DROP TABLE IF EXISTS `cursos`;
-CREATE TABLE IF NOT EXISTS `cursos` (
+CREATE TABLE `cursos` (
   `course_id` int(11) NOT NULL,
   `course_name` varchar(255) NOT NULL,
   `course_file` varchar(255) NOT NULL,
-  `category_name` varchar(255) NOT NULL,
-  PRIMARY KEY (`course_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `category_name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -42,11 +40,9 @@ CREATE TABLE IF NOT EXISTS `cursos` (
 -- Estructura de tabla para la tabla `roles`
 --
 
-DROP TABLE IF EXISTS `roles`;
-CREATE TABLE IF NOT EXISTS `roles` (
-  `rol_id` varchar(60) CHARACTER SET utf8mb4 NOT NULL,
-  PRIMARY KEY (`rol_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE `roles` (
+  `rol_id` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -54,26 +50,38 @@ CREATE TABLE IF NOT EXISTS `roles` (
 -- Estructura de tabla para la tabla `usuarios`
 --
 
-DROP TABLE IF EXISTS `usuarios`;
-CREATE TABLE IF NOT EXISTS `usuarios` (
-  `user_user` varchar(60) NOT NULL,
+CREATE TABLE `usuarios` (
   `user_name` varchar(255) NOT NULL,
-  `user_password` varchar(255) NOT NULL,
-  `user_grade` varchar(255) DEFAULT NULL,
-  `rol_id` varchar(60) NOT NULL,
-  PRIMARY KEY (`user_user`),
-  KEY `rol_id` (`rol_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `user_profession` varchar(255) NOT NULL,
+  `user_institution` varchar(255) NOT NULL,
+  `user_position` varchar(255) NOT NULL,
+  `user_phone` varchar(255) NOT NULL,
+  `user_age` int(11) NOT NULL,
+  `user_email` varchar(255) NOT NULL,
+  `user_password` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Restricciones para tablas volcadas
+-- Índices para tablas volcadas
 --
 
 --
--- Filtros para la tabla `usuarios`
+-- Indices de la tabla `cursos`
+--
+ALTER TABLE `cursos`
+  ADD PRIMARY KEY (`course_id`);
+
+--
+-- Indices de la tabla `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`rol_id`);
+
+--
+-- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD CONSTRAINT `rol_id` FOREIGN KEY (`rol_id`) REFERENCES `roles` (`rol_id`);
+  ADD PRIMARY KEY (`user_email`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
