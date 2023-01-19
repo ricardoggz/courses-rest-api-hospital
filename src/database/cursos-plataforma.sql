@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-01-2023 a las 17:01:01
+-- Tiempo de generación: 19-01-2023 a las 20:13:53
 -- Versión del servidor: 10.4.20-MariaDB
 -- Versión de PHP: 8.0.8
 
@@ -57,15 +57,20 @@ CREATE TABLE `usuarios` (
   `user_position` varchar(255) NOT NULL,
   `user_phone` varchar(255) NOT NULL,
   `user_age` int(11) NOT NULL,
-  `user_email` varchar(60) NOT NULL
+  `user_email` varchar(60) NOT NULL,
+  `user_recent` varchar(255) DEFAULT NULL,
+  `user_course_recent` varchar(255) DEFAULT NULL,
+  `user_last_year` int(11) DEFAULT NULL,
+  `user_nationality` varchar(255) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`user_name`, `user_profession`, `user_institution`, `user_position`, `user_phone`, `user_age`, `user_email`) VALUES
-('Ricardo José Guevara Guzmán', 'Médico', 'IMSS', 'Médico general', '5531241831', 22, '1');
+INSERT INTO `usuarios` (`user_name`, `user_profession`, `user_institution`, `user_position`, `user_phone`, `user_age`, `user_email`, `user_recent`, `user_course_recent`, `user_last_year`, `user_nationality`) VALUES
+('Ricardo José Guevara Guzmán', 'Pasante', 'IMSS', 'Pasante de medicina', '5531241831', 21, 'ricardo_ggzicm@outlook.com', NULL, NULL, NULL, NULL),
+('José Guitierrez', 'Biólogo', 'IMSS', 'Enfermero especialista', '123456', 33, 'email@email.com', NULL, NULL, NULL, NULL);
 
 --
 -- Índices para tablas volcadas
