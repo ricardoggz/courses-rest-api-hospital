@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 16-01-2023 a las 22:52:50
--- Versión del servidor: 10.4.27-MariaDB
--- Versión de PHP: 8.2.0
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 19-01-2023 a las 17:01:01
+-- Versión del servidor: 10.4.20-MariaDB
+-- Versión de PHP: 8.0.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,7 +32,7 @@ CREATE TABLE `cursos` (
   `course_name` varchar(255) NOT NULL,
   `course_file` varchar(255) NOT NULL,
   `category_name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -41,8 +41,8 @@ CREATE TABLE `cursos` (
 --
 
 CREATE TABLE `roles` (
-  `rol_id` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `rol_id` varchar(60) CHARACTER SET utf8mb4 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -57,9 +57,15 @@ CREATE TABLE `usuarios` (
   `user_position` varchar(255) NOT NULL,
   `user_phone` varchar(255) NOT NULL,
   `user_age` int(11) NOT NULL,
-  `user_email` varchar(60) NOT NULL,
-  `user_password` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `user_email` varchar(60) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`user_name`, `user_profession`, `user_institution`, `user_position`, `user_phone`, `user_age`, `user_email`) VALUES
+('Ricardo José Guevara Guzmán', 'Médico', 'IMSS', 'Médico general', '5531241831', 22, '1');
 
 --
 -- Índices para tablas volcadas

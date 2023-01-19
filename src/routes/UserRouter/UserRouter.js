@@ -1,7 +1,7 @@
 import { Router } from "express"
-import { userLogin, updateUser } from "../../controllers/index.js"
+import { updateUser, createUser, getUsers } from "../../controllers/index.js"
 export const UserRouter = Router()
 
-UserRouter
-    .post('/login-user', userLogin)
-    .put('/update-user/:id', updateUser)
+UserRouter.put('/update-user/:id', updateUser)
+UserRouter.post('/create-user', createUser)
+UserRouter.get('/all-users', getUsers)
