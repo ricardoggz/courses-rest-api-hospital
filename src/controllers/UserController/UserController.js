@@ -5,7 +5,7 @@ export const getUsers = (req, res)=>{
   db.pool.getConnection((err, conn)=>{
     if(err) throw new Error(err)
     conn.query('SELECT * FROM usuarios', (err, rows)=>{
-      if(err) return res.json(err)
+      if(err) return res.satus(500).json(err)
       return res.json(rows)
     })
 })
@@ -27,7 +27,7 @@ export const createUser = (req, res)=>{
         )`,
         (err, rows)=> {
           !err ? res.json(rows)
-          :res.json(err)
+          :res.status(400).json(err)
           conn.release()
         }
     )
