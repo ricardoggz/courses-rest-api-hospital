@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 23-01-2023 a las 20:44:05
+-- Tiempo de generación: 23-01-2023 a las 21:04:06
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -36,7 +36,7 @@ CREATE TABLE `cursos` (
   `course_date` varchar(255) DEFAULT NULL,
   `course_place` varchar(255) DEFAULT NULL,
   `course_modality` varchar(255) DEFAULT NULL,
-  `month_id` int(11) NOT NULL
+  `month_id` int(11) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -44,7 +44,7 @@ CREATE TABLE `cursos` (
 --
 
 INSERT INTO `cursos` (`course_id`, `course_name`, `course_instructor`, `course_price`, `course_description`, `course_date`, `course_place`, `course_modality`, `month_id`) VALUES
-(102, 'Ciclo de conferencias: grupos vulnerables en la atención social', 'Lic. Verónica Perea Rivera / Mtra. Virginia Emilia Fajardo Martínez', 0, 'Sin costo sólo personal del HIMFG. Presentar copia de credencial institucional. Cupo limitado a 60 personas de forma presencial.', 'Del 12 de enero al 12 de octubre', 'ANEXO A', 'PRESENCIAL', 0),
+(102, 'Ciclo de conferencias: grupos vulnerables en la atención social', 'Lic. Verónica Perea Rivera / Mtra. Virginia Emilia Fajardo Martínez', 0, 'Sin costo sólo personal del HIMFG. Presentar copia de credencial institucional. Cupo limitado a 60 personas de forma presencial.', 'Del 12 de enero al 12 de octubre', 'ANEXO A', 'PRESENCIAL', 1),
 (104, 'Sesiones de capacitación técnica y actualización del laboratorio clínico', 'M. en C. Israel Parra Ortega', 0, 'Sin costo sólo personal del HIMFG. Presentar copia de credencial institucional. Requisito: Estar interesado en el tema y cubrir el 80% de asistencia. Cupo limitado a 20 personas de forma presencial.', 'Del 12 de enero al 14 de diciembre', 'Aula 7', 'PRESENCIAL', 0),
 (105, 'Curso monográfico: Certificación hospitalaria, estándares\r\nnecesarios para brindar servicios de calidad', 'Mtra. Olivia Aguilar Guzmán', 800, NULL, 'Del 16 al 20 de enero', 'Auditorio Jesús Kumate', 'HÍBRIDA', 0);
 
@@ -58,6 +58,13 @@ CREATE TABLE `meses` (
   `month_id` int(11) NOT NULL,
   `month_name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `meses`
+--
+
+INSERT INTO `meses` (`month_id`, `month_name`) VALUES
+(1, 'Enero');
 
 -- --------------------------------------------------------
 
@@ -105,7 +112,8 @@ INSERT INTO `usuarios` (`user_name`, `user_profession`, `user_institution`, `use
 -- Indices de la tabla `cursos`
 --
 ALTER TABLE `cursos`
-  ADD PRIMARY KEY (`course_id`);
+  ADD PRIMARY KEY (`course_id`),
+  ADD KEY `month_id` (`month_id`);
 
 --
 -- Indices de la tabla `meses`
@@ -133,7 +141,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `meses`
 --
 ALTER TABLE `meses`
-  MODIFY `month_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `month_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
