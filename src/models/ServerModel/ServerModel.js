@@ -9,6 +9,7 @@ export class ServerModel{
     middlewares(){
         this.server.use(express.json())
         this.server.use(cors())
+        this.server.use(express.static('public'))
     }
     listen(){
         this.server.listen(3030)
