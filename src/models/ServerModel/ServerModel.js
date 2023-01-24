@@ -1,6 +1,9 @@
 import cors from 'cors'
 import express from 'express'
+import * as dotenv from 'dotenv'
 import { UserRouter, CourseRouter } from '../../routes/index.js'
+
+dotenv.config()
 
 export class ServerModel{
     constructor(){
@@ -8,7 +11,9 @@ export class ServerModel{
     }
     middlewares(){
         this.server.use(express.json())
-        this.server.use(cors())
+        this.server.use(cors({
+            origin: process.env.CORS_HOST
+        }))
         this.server.use(express.static('public'))
     }
     listen(){
