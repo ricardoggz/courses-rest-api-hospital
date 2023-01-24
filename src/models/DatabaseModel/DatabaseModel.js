@@ -5,10 +5,10 @@ dotenv.config()
 
 export class DatabaseModel{
     host = process.env.HOST
-    user = process.env.USER
+    user = 297416
     database = process.env.DATABASE
     password = process.env.PASSWORD
-    port = process.env.PORT
+    port = ''
     pool
     constructor(){
         this.pool = new mysql.createPool({
