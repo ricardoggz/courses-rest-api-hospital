@@ -12,7 +12,7 @@ export class ServerModel{
     middlewares(){
         this.server.use(express.json())
         this.server.use(cors({
-            origin: process.env.CORS_HOST
+            origin: process.env.CORS
         }))
         this.server.use(express.static('public'))
     }
