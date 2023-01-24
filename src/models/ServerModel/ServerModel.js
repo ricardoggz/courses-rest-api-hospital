@@ -11,9 +11,7 @@ export class ServerModel{
     }
     middlewares(){
         this.server.use(express.json())
-        this.server.use(cors({
-            origin: process.env.CORS
-        }))
+        this.server.use(cors())
         this.server.use(express.static('public'))
     }
     listen(){
