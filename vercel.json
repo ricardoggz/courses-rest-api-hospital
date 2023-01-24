@@ -6,8 +6,10 @@
             "use" : "@vercel/node"
         }
     ],
-    "routes" : {
-        "src" : "src/(.*)",
-        "dest" : "/"
-    }
+    "routes" : [
+        {
+            "src" : "src/(.*)",
+            "dest" : "/"
+        }
+    ]
 }
