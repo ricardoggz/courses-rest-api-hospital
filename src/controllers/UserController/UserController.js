@@ -14,16 +14,25 @@ export const createUser = (req, res)=>{
   db.pool.getConnection((err, conn)=>{
     if(err) throw new Error(err)
     conn.query(
-      `INSERT INTO usuarios
-        (user_name, user_profession, user_institution, user_position, user_phone, user_age, user_email)
+      `INSERT INTO estudiantes(
+          student_name,
+          student_grade,
+          student_institution,
+          student_work_position,
+          student_phone,
+          student_email,
+          student_age,
+          student_nationality
+        )
         VALUES(
-        "${req.body.user_name}",
-        "${req.body.user_profession}",
-        "${req.body.user_institution}",
-        "${req.body.user_position}",
-        "${req.body.user_phone}",
-        "${req.body.user_age}",
-        "${req.body.user_email}"
+        "${req.body.student_name}",
+        "${req.body.student_grade}",
+        "${req.body.student_institution}",
+        "${req.body.student_work_position}",
+        "${req.body.student_phone}",
+        "${req.body.student_email}",
+        "${req.body.student_age}",
+        "${req.body.student_nationality}"
         )`,
         (err, rows)=> {
           !err ? res.json(rows)
