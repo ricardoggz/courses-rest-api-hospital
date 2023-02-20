@@ -4,11 +4,11 @@ import * as dotenv from 'dotenv'
 dotenv.config()
 
 export class DatabaseModel{
-    host = process.env.HOST
-    user = process.env.USER
-    database = process.env.DATABASE
-    password = process.env.PASSWORD
-    port = process.env.PORT
+    host ='localhost'
+    user ='root'
+    database ='cursos'
+    password =''
+    port =3306
     pool
     constructor(){
         this.pool = new mysql.createPool({
