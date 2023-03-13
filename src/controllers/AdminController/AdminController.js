@@ -10,10 +10,14 @@ export const adminLogin = (req, res)=>{
         WHERE admin_user="${req.body.admin_user}"
         AND admin_password="${req.body.admin_password}"
         `
-        ,(err)=>{
-            !err ? res.json({message: 'Datos correctos'})
-            :res.json(err)
+        ,(err, rows)=>{
+            if(err) return res.json(err)
+            if(rows.length === 0 ) return res.json({
+                message: 'Datos incorrectos',
+                rows: null
+            })
             conn.release()
+            return res.json({message: 'Datos correctos', rows})
         })
     })
 }
