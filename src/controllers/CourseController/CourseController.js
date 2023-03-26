@@ -11,3 +11,22 @@ export function getCourses(req, res){
         })
     })
 }
+
+export const courseLogin = (req, res)=>{
+    db.pool.getConnection((err, conn)=>{
+        if(err) throw new Error(err)
+        conn.query(`
+        SELECT * FROM cursos
+        WHERE course_password="${req.body.course_password}"
+        `
+        ,(err, rows)=>{
+            if(err) return res.json(err)
+            if(rows.length === 0 ) return res.json({
+                message: 'Datos incorrectos',
+                rows: null
+            })
+            conn.release()
+            return res.json({message: 'Datos correctos', rows})
+        })
+    })
+}
