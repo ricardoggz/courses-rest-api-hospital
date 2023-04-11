@@ -62,3 +62,20 @@ export const updateUser= (req, res)=> {
       )
   })
 }
+export const userLogin = (req, res)=>{
+  db.pool.getConnection((err, conn)=>{
+    if(err) throw new Error(err)
+    conn.query(
+      `
+      SELECT * FROM estudiantes
+      WHERE student_email ="${req.body.student_email}"
+      AND student_password ="${req.body.student_password}" 
+      `,
+      (err, rows)=>{
+        !err ? res.json({rows})
+        :res.json(err)
+        conn.release()
+      }
+    )
+  })
+}
