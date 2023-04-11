@@ -20,8 +20,8 @@ export const createUser = (req, res)=>{
           student_institution,
           student_work_position,
           student_phone,
-          student_password,
           student_email,
+          student_password,
           student_age,
           student_nationality
         )
