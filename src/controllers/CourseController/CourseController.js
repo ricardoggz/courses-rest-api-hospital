@@ -12,6 +12,20 @@ export function getCourses(req, res){
     })
 }
 
+export function deleteCourse(req, res){
+    db.pool.getConnection((err, conn)=>{
+        if(err) return res.json(err)
+        conn.query(`
+            DELETE FROM cursos WHERE course_id ="${req.body.course_id}"
+        `, (err)=>{
+            if(err) return res.json(err)
+            return res.json({
+                message: 'Curso eliminado correctamente'
+            })
+        })
+    })
+}
+
 export const courseLogin = (req, res)=>{
     db.pool.getConnection((err, conn)=>{
         if(err) throw new Error(err)
