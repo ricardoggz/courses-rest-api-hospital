@@ -9,6 +9,7 @@ export const adminLogin = (req, res)=>{
         SELECT * FROM administradores
         WHERE admin_user="${req.body.admin_user}"
         AND admin_password="${req.body.admin_password}"
+        AND department_id="${req.body.department_id}"
         `
         ,(err, rows)=>{
             if(err) return res.json(err)
