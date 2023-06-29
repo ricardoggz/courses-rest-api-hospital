@@ -4,7 +4,8 @@ import * as dotenv from 'dotenv'
 import {
     UserRouter,
     CourseRouter,
-    AdminRouter
+    AdminRouter,
+    PaymentRouter
 } from '../../routes/index.js'
 
 dotenv.config()
@@ -24,5 +25,6 @@ export class ServerModel{
     routes(){
         this.server.use('/api/auth/', UserRouter, AdminRouter)
         this.server.use('/api/courses/', CourseRouter)
+        this.server.use('/api/payments/', PaymentRouter)
     }
 }
