@@ -17,3 +17,22 @@ export const getPayments = (req, res)=>{
       })
   })
 }
+
+export const addPayment = (req, res)=>{
+  db.pool.getConnection((err, conn)=>{
+    if(err) throw new Error(err)
+    conn.query(`
+      INSERT INTO pagos (course_id, student_id, payment_successfull)
+      VALUES (
+        "${req.body.course_id}",
+        "${req.body.student_id}",
+        "${req.body.payment_successfull}"
+      )
+    `, (err, rows)=>{
+      if(err) return res.satus(500).json(err)
+      return res.json({
+        message: 'Pago completado'
+      })
+    })
+  })
+}
