@@ -6,7 +6,8 @@ export const getPayments = (req, res)=>{
     db.pool.getConnection((err, conn)=>{
       if(err) throw new Error(err)
       conn.query(`
-        SELECT pagos.course_id, course_name, student_name, payment_successfull FROM pagos
+        SELECT pagos.course_id, course_name, student_name, payment_successfull, payment_reference
+        FROM pagos
         INNER JOIN cursos
         ON pagos.course_id = cursos.course_id
         INNER JOIN estudiantes
@@ -22,11 +23,12 @@ export const addPayment = (req, res)=>{
   db.pool.getConnection((err, conn)=>{
     if(err) throw new Error(err)
     conn.query(`
-      INSERT INTO pagos (course_id, student_id, payment_successfull)
+      INSERT INTO pagos (course_id, student_id, payment_successfull, payment_reference)
       VALUES (
         "${req.body.course_id}",
         "${req.body.student_id}",
-        "${req.body.payment_successfull}"
+        "${req.body.payment_successfull}",
+        "${req.body.payment_reference}"
       )
     `, (err, rows)=>{
       if(err) return res.satus(500).json(err)
