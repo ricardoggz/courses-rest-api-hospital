@@ -6,7 +6,17 @@ export const getPayments = (req, res)=>{
     db.pool.getConnection((err, conn)=>{
       if(err) throw new Error(err)
       conn.query(`
-        SELECT pagos.course_id, course_name, student_name, payment_successfull, payment_reference
+        SELECT
+        pagos.course_id,
+        student_name,
+        student_age,
+        student_email,
+        student_password,
+        student_grade,
+        student_institution,
+        course_name,
+        payment_successfull,
+        payment_reference
         FROM pagos
         INNER JOIN cursos
         ON pagos.course_id = cursos.course_id

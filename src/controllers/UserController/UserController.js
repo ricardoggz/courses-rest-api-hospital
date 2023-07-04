@@ -31,7 +31,7 @@ export const createUser = (req, res)=>{
         "${req.body.student_name}",
         "${req.body.student_grade}",
         "${req.body.student_institution}",
-        "${req.body.student_work_position}",
+        null,
         "${req.body.student_phone}",
         "${req.body.student_email}",
         "${req.body.student_password}",
