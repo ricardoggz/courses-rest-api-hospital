@@ -15,6 +15,7 @@ export const createUser = (req, res)=>{
     if(err) throw new Error(err)
     conn.query(
       `INSERT INTO estudiantes(
+          student_id,
           student_name,
           student_grade,
           student_institution,
@@ -26,6 +27,7 @@ export const createUser = (req, res)=>{
           student_nationality
         )
         VALUES(
+        "${req.body.student_id}",
         "${req.body.student_name}",
         "${req.body.student_grade}",
         "${req.body.student_institution}",
