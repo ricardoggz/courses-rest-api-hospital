@@ -53,16 +53,22 @@ export const updateUser= (req, res)=> {
   db.pool.getConnection((err, conn)=>{
       if(err) throw new Error(err)
       conn.query(
-          `UPDATE usuarios
-           SET
-           user_user = "${req.body.user_user}",
-           user_name = "${req.body.user_name}",
-           user_password = "${req.body.user_password}"
-           WHERE user_user = "${req.params.id}"`,
+          `UPDATE estudiantes
+          SET
+          student_name="${req.body.student_name}",
+          student_age="${req.body.student_age}",
+          student_nationality="${req.body.student_nationality}",
+          student_state="${req.body.student_state}",
+          student_grade="${req.body.student_grade}",
+          student_institution="${req.body.student_institution}",
+          student_phone="${req.body.student_phone}",
+          student_email="${req.body.student_email}",
+          student_password="${req.body.student_password}"
+          WHERE student_id="${req.params.id}"`,
           (err)=> {
-              !err ? res.json({message: 'Datos actualizados con éxito'})
-              :res.json(err)
-              conn.release()
+            !err ? res.json({message: 'Datos actualizados con éxito'})
+            :res.json(err)
+            conn.release()
           }
       )
   })
