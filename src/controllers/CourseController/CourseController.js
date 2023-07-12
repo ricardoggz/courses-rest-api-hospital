@@ -30,14 +30,21 @@ export function editCourse (req, res){
     db.pool.getConnection((err, conn)=>{
         if(err) return res.json(err)
         conn.query(`
-            UPDATE cursos SET ?
+            UPDATE cursos SET
             course_name = "${req.body.course_name}",
             course_instructor = "${req.body.course_instructor}",
-            course_price = "${req.body.course_price}",
-            course_place = "${req.body.course_place}",
-            course_image = "${req.body.course_image}",
-            course_pdf= "${req.body.course_pdf}",
-            modality_id = "${req.body.modality_id}"
+            course_price = NULLIF("${req.body.course_price}", ""),
+            course_place = NULLIF("${req.body.course_place}", ""),
+            course_image = NULLIF("${req.body.course_image}", ""),
+            course_pdf= NULLIF("${req.body.course_pdf}", ""),
+            modality_id = NULLIF("${req.body.modality_id}", ""),
+            course_start_date = "${req.body.course_start_date}",
+            course_finish_date = "${req.body.course_finish_date}",
+            month_id = "${req.body.month_id}",
+            course_password = NULLIF("${req.body.course_password}", ""),
+            course_vimeo_folder = NULLIF("${req.body.course_vimeo_folder}", ""),
+            course_live_video = NULLIF("${req.body.course_live_video}", ""),
+            course_url = NULLIF("${req.body.course_url}", "")
             WHERE course_id = "${req.params.id}"
         `, (err)=>{
             if(err) return res.json(err)
@@ -84,30 +91,24 @@ export function addCourse(req, res){
             course_password,
             course_vimeo_folder,
             course_live_video,
-            course_zoom_video,
-            course_zoom_id,
-            course_zoom_password,
             course_url
         )
         VALUES(
             "${req.body.course_name}",
-            "${!req.body.course_instructor ? null : req.body.course_instructor}"),
-            "${!req.body.course_price ? null : req.body.course_price}",
-            "${!req.body.course_place ? null : req.body.course_place}",
-            "${!req.body.course_image ? null : req.body.course_image}",
-            "${!req.body.course_pdf ? null : req.body.course_pdf}",
-            "${!req.body.modality_id ? null : req.body.modality_id}",
-            "${!req.body.course_start_date ? null : req.body.course_start_date}",
-            "${!req.body.course_finish_date ? null : req.body.course_finish_date}",
-            "${!req.body.month_id ? null : req.body.month_id}",
+            NULLIF("${req.body.course_instructor}", ""),
+            NULLIF("${req.body.course_price}", ""),
+            NULLIF("${req.body.course_place}", ""),
+            NULLIF("${req.body.course_image}", ""),
+            NULLIF("${req.body.course_pdf}", ""),
+            NULLIF("${req.body.modality_id}", ""),
+            "${req.body.course_start_date}",
+            "${req.body.course_finish_date}",
+            "${req.body.month_id}",
             NULL,
-            "${!req.body.course_password? null : req.body.course_password}",
-            "${!req.body.course_vimeo_folder ? null : req.body.course_vimeo_folder}",
-            "${!req.body.course_live_video ? null : req.body.course_live_video}",
-            "${!req.body.course_zoom_video ? null : req.body.course_zoom_video}",
-            "${!req.body.course_zoom_id ? null : req.body.course_zoom_id}",
-            "${!req.body.course_zoom_password ? null : req.body.course_zoom_password}",
-            "${!req.body.course_password ? null : req.body.course_password}"
+            NULLIF("${req.body.course_password}", ""),
+            NULLIF("${req.body.course_vimeo_folder}", ""),
+            NULLIF("${req.body.course_live_video}", ""),
+            NULLIF("${req.body.course_url}", "")
         )
         `
         ,(err)=>{
