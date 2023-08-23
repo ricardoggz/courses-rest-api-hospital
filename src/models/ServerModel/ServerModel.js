@@ -1,5 +1,6 @@
 import cors from 'cors'
 import express from 'express'
+import fileUpload from 'express-fileupload'
 import * as dotenv from 'dotenv'
 import {
     UserRouter,
@@ -15,6 +16,7 @@ export class ServerModel{
         this.server = express()
     }
     middlewares(){
+        this.server.use(fileUpload())
         this.server.use(express.json())
         this.server.use(cors())
         this.server.use(express.static('public'))

@@ -22,12 +22,12 @@ export const createUser = (req, res)=>{
         student_nationality,
         student_state,
         student_grade,
+        student_license,
         student_institution,
         student_phone,
         student_email,
         student_password,
-        student_graduated,
-        student_license
+        student_graduated
       )
         VALUES(
         "${req.body.student_id}",
@@ -36,12 +36,12 @@ export const createUser = (req, res)=>{
         "${req.body.student_nationality}",
         "${req.body.student_state}",
         "${req.body.student_grade}",
+        "${req.body.student_license}",
         "${req.body.student_institution}",
         "${req.body.student_phone}",
         "${req.body.student_email}",
         "${req.body.student_password}",
-        "${req.body.student_graduated}",
-        "${req.body.student_license}"
+        "${req.body.student_graduated}"
         )`,
         (err, rows)=> {
           !err ? res.json(rows)
@@ -50,6 +50,12 @@ export const createUser = (req, res)=>{
         }
     )
   })
+  /*let EDFile = req.files.student_license
+    EDFile.mv(`../files/${EDFile.name}`,err => {
+        if(err) return res.status(500).send({ message : err })
+        return res.status(200).send({ message : 'File upload' })
+    })*/
+    console.log(req.files)
 }
 export const updateUser= (req, res)=> {
   db.pool.getConnection((err, conn)=>{
