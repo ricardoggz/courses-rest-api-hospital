@@ -26,7 +26,8 @@ export const createUser = (req, res)=>{
         student_phone,
         student_email,
         student_password,
-        student_graduated
+        student_graduated,
+        student_license
       )
         VALUES(
         "${req.body.student_id}",
@@ -39,7 +40,8 @@ export const createUser = (req, res)=>{
         "${req.body.student_phone}",
         "${req.body.student_email}",
         "${req.body.student_password}",
-        "${req.body.student_graduated}"
+        "${req.body.student_graduated}",
+        "${req.body.student_license}"
         )`,
         (err, rows)=> {
           !err ? res.json(rows)
