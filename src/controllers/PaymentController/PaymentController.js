@@ -11,6 +11,7 @@ export const getPayments = (req, res)=>{
         student_name,
         student_age,
         student_email,
+        student_phone,
         student_password,
         student_grade,
         student_institution,
