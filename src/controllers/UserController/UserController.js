@@ -36,7 +36,7 @@ export const createUser = (req, res)=>{
         "${req.body.student_nationality}",
         "${req.body.student_state}",
         "${req.body.student_grade}",
-        "${req.body.student_license}",
+        "${req.files.student_license.name}",
         "${req.body.student_institution}",
         "${req.body.student_phone}",
         "${req.body.student_email}",
@@ -50,12 +50,7 @@ export const createUser = (req, res)=>{
         }
     )
   })
-  /*let EDFile = req.files.student_license
-    EDFile.mv(`../files/${EDFile.name}`,err => {
-        if(err) return res.status(500).send({ message : err })
-        return res.status(200).send({ message : 'File upload' })
-    })*/
-    console.log(req.files)
+  console.log(req.files)
 }
 export const updateUser= (req, res)=> {
   db.pool.getConnection((err, conn)=>{
