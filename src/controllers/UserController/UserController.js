@@ -36,7 +36,7 @@ export const createUser = (req, res)=>{
         "${req.body.student_nationality}",
         "${req.body.student_state}",
         "${req.body.student_grade}",
-        "${req.files.student_license.name}",
+        NULLIF("${req.body.student_license}", ""),
         "${req.body.student_institution}",
         "${req.body.student_phone}",
         "${req.body.student_email}",
