@@ -20,6 +20,7 @@ export const getPayments = (req, res)=>{
         student_license,
         course_name,
         payment_successfull,
+        payment_amount,
         payment_reference
         FROM pagos
         INNER JOIN cursos
