@@ -37,11 +37,12 @@ export const addPayment = (req, res)=>{
   db.pool.getConnection((err, conn)=>{
     if(err) throw new Error(err)
     conn.query(`
-      INSERT INTO pagos (course_id, student_id, payment_successfull, payment_reference)
+      INSERT INTO pagos (course_id, student_id, payment_successfull, payment_amount, payment_reference)
       VALUES (
         "${req.body.course_id}",
         "${req.body.student_id}",
         "${req.body.payment_successfull}",
+        "${req.body.payment_amount}",
         "${req.body.payment_reference}"
       )
     `, (err, rows)=>{
