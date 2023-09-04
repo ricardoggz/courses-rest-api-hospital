@@ -94,3 +94,20 @@ export const userLogin = (req, res)=>{
     )
   })
 }
+export const updateTaxUserData = (req, res)=>{
+  db.pool.getConnection((err, conn)=>{
+    if(err) throw new Error(err)
+    conn.query(
+      `
+      UPDATE estudiantes SET
+      student_tax_data ="${req.body.student_tax_data}"
+      WHERE student_id ="${req.params.id}"
+      `,
+      (err, rows)=>{
+        !err ? res.json({rows})
+        :res.json(err)
+        conn.release()
+      }
+    )
+  }) 
+}
