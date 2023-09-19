@@ -8,7 +8,7 @@ import {
 
 export const QuestionOptionRouter = Router()
 QuestionOptionRouter
-    .get('/all-courses-options', getQuestionsOptions)
-    .post('/add-course-option', addQuestionOption)
-    .delete('/delete-course-option', deleteQuestionOption)
-    .put('/edit-course-option/:id', editQuestionOption)
+    .get('/all-questions-options', getQuestionsOptions)
+    .post('/add-question-option', addQuestionOption)
+    .delete('/delete-question-option', deleteQuestionOption)
+    .put('/edit-question-option/:id', editQuestionOption)
