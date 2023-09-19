@@ -56,7 +56,7 @@ export function addQuestionOption(req, res){
         VALUES(
             "${req.body.option_name}",
             "${req.body.option_value}",
-            "${req.body.question_id}",
+            "${req.body.question_id}"
         )
         `
         ,(err)=>{
