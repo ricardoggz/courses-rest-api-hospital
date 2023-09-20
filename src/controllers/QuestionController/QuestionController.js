@@ -7,10 +7,12 @@ export const addQuestion = (req, res)=>{
       if(err) throw new Error(err)
       conn.query(`
         INSERT INTO preguntas(
+        question_id,
         question_name,
         test_id
         )
         VALUES(
+          "${req.body.question_id}",
           "${req.body.question_name}",
           "${req.body.test_id}"
         )
