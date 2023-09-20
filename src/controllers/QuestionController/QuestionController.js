@@ -15,7 +15,7 @@ export const addQuestion = (req, res)=>{
           "${req.body.test_id}"
         )
       `, (err, rows)=>{
-        if(err) return res.satus(500).json(err)
+        if(err) return res.status(500).json(err)
         return res.json({
           message: 'Pregunta agregada completamente'
         })

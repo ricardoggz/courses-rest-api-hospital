@@ -47,9 +47,11 @@ export function addTest(req, res){
         if(err) throw new Error(err)
         conn.query(`
         INSERT INTO examenes(
+            test_id,
             test_name
         )
         VALUES(
+            "${req.body.test_id}",
             "${req.body.test_name}"
         )
         `
