@@ -49,11 +49,13 @@ export function addQuestionOption(req, res){
         if(err) throw new Error(err)
         conn.query(`
         INSERT INTO opciones_preguntas(
+            option_id,
             option_name,
             option_value,
             question_id
         )
         VALUES(
+            "${req.body.option_id}",
             "${req.body.option_name}",
             "${req.body.option_value}",
             "${req.body.question_id}"
