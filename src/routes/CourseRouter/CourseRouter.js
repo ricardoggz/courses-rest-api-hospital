@@ -4,7 +4,9 @@ import {
     courseLogin,
     deleteCourse,
     editCourse,
-    addCourse
+    addCourse,
+    editTestCourse,
+    getTestCourse
 } from '../../controllers/index.js'
 
 export const CourseRouter = Router()
@@ -14,3 +16,5 @@ CourseRouter
     .delete('/delete-course', deleteCourse)
     .put('/edit-course/:id', editCourse)
     .post('/add-course', addCourse)
+    .put('/edit-test-course/:id', editTestCourse)
+    .get('/get-test-course/:id', getTestCourse)

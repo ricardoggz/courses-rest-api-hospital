@@ -118,3 +118,40 @@ export function addCourse(req, res){
         })
     })
 }
+export function editTestCourse (req, res){
+    db.pool.getConnection((err, conn)=>{
+        if(err) return res.json(err)
+        conn.query(`
+            UPDATE cursos SET
+            test_id = "${req.body.test_id}"
+            WHERE course_id = "${req.params.id}"
+        `, (err)=>{
+            if(err) return res.json(err)
+            return res.json({
+                message: 'Cuestionario agregado correctamente'
+            })
+        })
+    })
+}
+export function getTestCourse(req, res){
+    db.pool.getConnection((err, conn)=>{
+        if(err) return res.json(err)
+        conn.query(`
+            SELECT
+            cursos.course_id,
+            cursos.course_name,
+            examenes.test_name,
+            preguntas.question_name,
+            opciones_preguntas.option_name,
+            opciones_preguntas.option_value
+            FROM cursos
+            INNER JOIN examenes on cursos.test_id = examenes.test_id
+            INNER JOIN preguntas on preguntas.test_id = examenes.test_id
+            INNER JOIN opciones_preguntas on opciones_preguntas.question_id = preguntas.question_id
+            where course_id = "${req.params.id}"
+        `, (err, rows)=>{
+            if(err) return res.json(err)
+            return res.json(rows)
+        })
+    })
+}
