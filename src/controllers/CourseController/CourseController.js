@@ -142,6 +142,7 @@ export function getTestCourse(req, res){
             cursos.course_name,
             examenes.test_name,
             preguntas.question_name,
+            opciones_preguntas.question_id,
             opciones_preguntas.option_name,
             opciones_preguntas.option_value
             FROM cursos
