@@ -58,3 +58,19 @@ export const addPayment = (req, res)=>{
     })
   })
 }
+
+export const editPayment = (req, res)=>{
+  db.pool.getConnection((err, conn)=>{
+    if(err) throw new Error(err)
+    conn.query(`
+      UPDATE pagos SET
+      payment_degree =  "${req.body.payment_degree}"
+      WHERE student_id = "${req.params.id}"
+    `, (err, rows)=>{
+      if(err) return res.satus(500).json(err)
+      return res.json({
+        message: 'Registro actualizado correctamente'
+      })
+    })
+  })
+}
