@@ -8,6 +8,7 @@ export const getPayments = (req, res)=>{
       conn.query(`
         SELECT
         pagos.course_id,
+        student_id,
         student_name,
         student_age,
         student_email,
