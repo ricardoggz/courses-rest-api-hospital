@@ -9,4 +9,4 @@ export const PaymentRouter = Router()
 PaymentRouter
     .get('/all-payments', getPayments)
     .post('/add-payment', addPayment)
-    .put('/edit-payment', editPayment)
+    .put('/edit-payment/:id', editPayment)
