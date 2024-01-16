@@ -78,3 +78,19 @@ export const editPayment = (req, res)=>{
     })
   })
 }
+
+export const editGrade = (req, res)=>{
+  db.pool.getConnection((err, conn)=>{
+    if(err) throw new Error(err)
+    conn.query(`
+      UPDATE pagos SET
+      payment_grade =  "${req.body.payment_grade}"
+      WHERE student_id = "${req.params.id}"
+    `, (err, rows)=>{
+      if(err) return res.satus(500).json(err)
+      return res.json({
+        message: 'Calificación actualizada correctamente'
+      })
+    })
+  })
+}
