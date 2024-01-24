@@ -156,3 +156,19 @@ export function getTestCourse(req, res){
         })
     })
 }
+
+export function editMaxRange (req, res){
+    db.pool.getConnection((err, conn)=>{
+        if(err) return res.json(err)
+        conn.query(`
+            UPDATE cursos SET
+            course_max_range = "${req.body.course_max_range}"
+            WHERE course_id = "${req.params.id}"
+        `, (err)=>{
+            if(err) return res.json(err)
+            return res.json({
+                message: 'Cupo máximo agregado correctamente'
+            })
+        })
+    })
+}

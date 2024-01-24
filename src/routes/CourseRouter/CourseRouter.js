@@ -6,7 +6,8 @@ import {
     editCourse,
     addCourse,
     editTestCourse,
-    getTestCourse
+    getTestCourse,
+    editMaxRange
 } from '../../controllers/index.js'
 
 export const CourseRouter = Router()
@@ -18,3 +19,4 @@ CourseRouter
     .post('/add-course', addCourse)
     .put('/edit-test-course/:id', editTestCourse)
     .get('/get-test-course/:id', getTestCourse)
+    .put('/edit-max-range/:id', editMaxRange)
