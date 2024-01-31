@@ -9,7 +9,8 @@ import {
     PaymentRouter,
     QuestionRouter,
     QuestionOptionRouter,
-    TestRouter
+    TestRouter,
+    DirectionRouter
 } from '../../routes/index.js'
 
 dotenv.config()
@@ -32,5 +33,6 @@ export class ServerModel{
         this.server.use('/api/courses/', CourseRouter)
         this.server.use('/api/payments/', PaymentRouter)
         this.server.use('/api/questions/', QuestionRouter, QuestionOptionRouter, TestRouter)
+        this.server.use('/api/directions/', DirectionRouter)
     }
 }
