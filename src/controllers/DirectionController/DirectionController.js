@@ -1,3 +1,7 @@
+import { DatabaseModel } from "../../models/index.js"
+
+const db = new DatabaseModel()
+
 export function getDirections(req, res){
     db.pool.getConnection((err, conn)=>{
         if(err) return res.json(err)
