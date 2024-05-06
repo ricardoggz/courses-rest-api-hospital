@@ -35,6 +35,6 @@ export class ServerModel{
         this.server.use('/api/payments/', PaymentRouter)
         this.server.use('/api/questions/', QuestionRouter, QuestionOptionRouter, TestRouter)
         this.server.use('/api/directions/', DirectionRouter)
-        this.server.use('/api/inscriptions', InscriptionRouter)
+        this.server.use('/api/inscriptions/', InscriptionRouter)
     }
 }
