@@ -5,7 +5,7 @@ dotenv.config()
 
 export class DatabaseModel{
     host =process.env.HOST
-    user ='cemesatel'
+    user ='himfg'
     database =process.env.DATABASE
     password =process.env.PASSWORD
     port =process.env.PORT
