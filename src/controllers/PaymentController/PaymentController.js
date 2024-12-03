@@ -9,6 +9,11 @@ export const getPayments = (req, res)=>{
         SELECT
         pagos.course_id,
         pagos.student_id,
+        cursos.course_place,
+        cursos.course_start_date,
+        cursos.course_finish_date,
+        cursos.course_url,
+        cursos.course_password,
         student_name,
         student_age,
         student_email,
