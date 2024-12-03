@@ -26,7 +26,7 @@ const sendEmail = async(req, res)=>{
                 <br />
                 <span>Sede: ${req.body.course_place}</span>
                 <br />
-                <span>Liga activa de curso: ${req.body.course_url=== 'null' ? 'No aplica' : req.body.course_url}</span>
+                <span>Liga activa de curso: ${req.body.course_url=== 'null' ? 'No aplica' : 'https://himfg.edu.mx/video/' + req.body.course_url}</span>
                 <br />
                 <span>Contraseña de curso: ${req.body.course_password=== 'null' ? 'No aplica' : req.body.course_password}</span>
                 <br />
