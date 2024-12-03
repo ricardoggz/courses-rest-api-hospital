@@ -11,7 +11,8 @@ import {
     QuestionOptionRouter,
     TestRouter,
     DirectionRouter,
-    InscriptionRouter
+    InscriptionRouter, 
+    EmailRouter
 } from '../../routes/index.js'
 
 dotenv.config()
@@ -36,5 +37,6 @@ export class ServerModel{
         this.server.use('/api/questions/', QuestionRouter, QuestionOptionRouter, TestRouter)
         this.server.use('/api/directions/', DirectionRouter)
         this.server.use('/api/inscriptions/', InscriptionRouter)
+        this.server.use('/api/emails/', EmailRouter)
     }
 }
