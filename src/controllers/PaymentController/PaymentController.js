@@ -26,6 +26,7 @@ export const getPayments = (req, res)=>{
         student_license,
         student_license_part_2,
         student_tax_data,
+        student_role,
         course_name,
         payment_successfull,
         payment_amount,
