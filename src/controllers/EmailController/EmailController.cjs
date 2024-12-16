@@ -35,6 +35,27 @@ const sendEmail = async(req, res)=>{
                 <span>Contraseña de usuario: ${req.body.student_password}</span>
                 <br />
                 <span>Referencia de pago: ${req.body.payment_reference}</span>
+                <br />
+                <h1>LEER CON ATENCIÓN</h1>
+                <br />
+                <b>Requisitos para la emisión de constancia</b>
+                <br />
+                <p>
+                    1._ Realizar <b>evaluación (esta aparecerá al finalizar la última transmisión en vivo):</b> 
+                     Dispone de 2 oportunidades, cualquier intento posterior no será válido. <b/>ES DE CARÁCTER 
+                    OBLIGATORIO. La evaluación estará activa por diez días después del término del curso.</b>
+                </p>
+                <br />
+                <p>
+                    2._ Acreditar con un mínimo del 80%. Recibirá su constancia mediante correo
+                     electrónico quince días de después del término del curso.
+                </p>
+                <br />
+                <p>
+                    3._ <b>Confirmar la recepción de la constancia.</b> Tendrá un máximo de cinco días 
+                    dos horas para confirmar de recibido o en su caso solicitar correción, unavez cumplido 
+                    este tiempo y no tener respuesta será invalidada por protección de datos del asistente.
+                </p>
             `
         })
         return res.json({
