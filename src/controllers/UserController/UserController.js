@@ -27,7 +27,8 @@ export const createUser = (req, res)=>{
         student_institution,
         student_phone,
         student_email,
-        student_role
+        student_role,
+        student_tax_data
       )
         VALUES(
         "${req.body.student_id}",
@@ -41,7 +42,8 @@ export const createUser = (req, res)=>{
         "${req.body.student_institution}",
         "${req.body.student_phone}",
         "${req.body.student_email}",
-        "${req.body.student_role}"
+        "${req.body.student_role}",
+        NULLIF("${req.body.student_tax_data}", "")
         )`,
         (err, rows)=> {
           !err ? res.json(rows)
