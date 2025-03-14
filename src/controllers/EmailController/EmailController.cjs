@@ -12,7 +12,7 @@ const transporter = nodemailer.createTransport({
 const sendEmail = async(req, res)=>{
     try {
         const message = await transporter.sendMail({
-            from:'cemesatel@himfg.edu.mx',
+            from:'lcruz@himfg.edu.mx',
             to: req.body.student_email,
             subject:'Datos de inscripción',
             html:`
