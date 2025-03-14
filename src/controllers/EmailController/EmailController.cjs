@@ -5,8 +5,8 @@ const transporter = nodemailer.createTransport({
     port:465,
     secure:true,
     auth:{
-        user:'cemesatel@himfg.edu.mx',
-        pass:'Himce.162*/#'
+        user:'lcruz@himfg.edu.mx',
+        pass:'Himuz.162*/#'
     }
 })
 const sendEmail = async(req, res)=>{
