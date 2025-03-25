@@ -14,6 +14,7 @@ export const getPayments = (req, res)=>{
         cursos.course_finish_date,
         cursos.course_url,
         cursos.course_password,
+        cursos.modality_id,
         student_name,
         student_age,
         student_email,
