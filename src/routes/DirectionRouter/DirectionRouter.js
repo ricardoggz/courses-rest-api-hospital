@@ -7,4 +7,4 @@ import {
 export const DirectionRouter = Router()
 DirectionRouter
     .get('/all-directions', getDirections)
-    .get('/all-investigators', getInvestigators)
+    .get('/all-investigators/:id', getInvestigators)

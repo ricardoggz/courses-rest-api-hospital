@@ -24,7 +24,9 @@ export function getInvestigators(req, res) {
             laboratorio_nombre
             FROM investigadores
             INNER JOIN laboratorios
-            WHERE laboratorios.laboratorio_id = investigadores.investigador_id`, (err, rows) => {
+            ON investigadores.laboratorio_id = laboratorios.laboratorio_id
+            WHERE investigadores.laboratorio_id = ${req.params.id}
+            `, (err, rows) => {
             if (err) return res.json(err)
             return res.json(rows)
         })
