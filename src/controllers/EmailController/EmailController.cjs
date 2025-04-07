@@ -30,10 +30,6 @@ const sendEmail = async (req, res) => {
                 <br />
                 <span>Contraseña de curso: ${req.body.course_password === 'no aplica' ? 'No aplica' : req.body.course_password}</span>
                 <br />
-                <span>Correo de usuario: ${req.body.student_email}</span>
-                <br />
-                <span>Contraseña de usuario: ${req.body.student_password}</span>
-                <br />
                 <span>Referencia de pago: ${req.body.payment_reference}</span>
                 <br />
                 <h1>LEER CON ATENCIÓN</h1>
